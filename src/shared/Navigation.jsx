@@ -52,14 +52,14 @@ const Navigation = () => {
                 <>
                     <div className='navbar-nav'>
                         <ul>
-                            <li onClick={handleTopTracks} className={topType === "tracks" && "active"}>Top Tracks</li>
-                            <li onClick={handleTopArtists} className={topType === "artists" && "active"}>Top Artists</li>
+                            <li onClick={handleTopTracks} className={topType === "tracks" ? "active" : ""}>Top Tracks</li>
+                            <li onClick={handleTopArtists} className={topType === "artists" ? "active" : ""}>Top Artists</li>
                             <li onClick={handleTopGenres}>Top Genres</li>
                         </ul>
                     </div>
 
                     <div className='navbar-settings'>
-                        <img src={smile} width="36px" onClick={handleLogout} />
+                        <button type="button" className="btn" onClick={handleLogout} >Log out</button>
                     </div>
                 </>    
             }

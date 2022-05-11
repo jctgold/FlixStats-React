@@ -12,7 +12,7 @@ export const StateContext = ({children}) => {
     const [ blur, setBlur ] = useState(false);
 
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-    const REDIRECT_URI = 'http://localhost:3000';
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
     const RESPONSE_TYPE = "token";
     const SCOPE = "user-top-read"
@@ -42,8 +42,6 @@ export const StateContext = ({children}) => {
 
     const getItems = async (type) => {
 
-        console.log("Getting",type);
-        
         const { data } = await axios.get(`https://api.spotify.com/v1/me/top/${type}`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -56,7 +54,7 @@ export const StateContext = ({children}) => {
         });
 
         if (data.items.length > 0) {
-            console.log(data.items);
+            
             setItems(data.items);
 
             let headingArray = [];

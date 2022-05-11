@@ -183,7 +183,22 @@ body {
 
     .navbar-settings {
         text-align: right;
-        cursor: pointer;
+
+        .btn {
+            padding: 5px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            background-color: $PRIMARY;
+            color: $BG_DARK;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 1s ease;
+
+            &:hover {
+                background-color: $SECONDARY;
+                transform: scale(1.05)
+            }
+        }
     }
 
 }
@@ -287,6 +302,7 @@ body {
 
         &:hover {
             background-color: $PRIMARY;
+            transform: scale(1.1)
         }
     }
 
