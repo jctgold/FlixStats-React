@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion'
 import { useStateContext } from '../context/StateContext';
 
@@ -18,7 +18,7 @@ const Circle = ({item, index}) => {
         case 6: size = 196; initialXPosition = 100; initialYPosition = 100; break;
         case 7: size = 187; initialXPosition = -100; initialYPosition = 100;break;
         case 8: size = 145; initialXPosition = -100; initialYPosition = 100;break;
-        case 9: size = 128; initialXPosition = -100; initialYPosition = 100;break;
+        default: size = 128; initialXPosition = -100; initialYPosition = 100;break;
       }
 
     const handleOnMouseEnter = () => {

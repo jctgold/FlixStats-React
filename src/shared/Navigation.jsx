@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import smile from '../images/icons/smile.svg';
 import { useStateContext } from '../context/StateContext';
 import { toast } from 'react-hot-toast';
 
@@ -63,7 +62,7 @@ const Navigation = () => {
                     </div>
 
                     <div className='navbar-settings'>
-                        <button type="button" className="btn" onClick={handleLogout} >Log out</button>
+                        <button type="button" className="btn" onClick={handleLogout} >Logout</button>
                     </div>
                 </>    
             }

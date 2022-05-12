@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { toast } from 'react-hot-toast';
 
@@ -90,28 +90,11 @@ export const StateContext = ({children}) => {
                 );
             }
         }).catch( error => { 
-            if(error.code == "ERR_BAD_REQUEST") {
+            if(error.code === "ERR_BAD_REQUEST") {
                 logOut();
             }
         } );
 
-        /*
-         else {
-            toast('Error getting data. Please logout and login again.',
-            {
-                icon: '❌',
-                style: {
-                borderRadius: '10px',
-                background: '#2A2A3E',
-                color: '#FFFFFF',
-                boxShadow: "0px 0px 10px #191927",
-                textAlign: 'center'
-                },
-            }
-            );
-        }
-        */
-    
     }
 
     const onImageHover = (item, index) => {
