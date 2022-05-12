@@ -75,7 +75,19 @@ export const StateContext = ({children}) => {
                 setHeadingInfo(headingArray);
                 setInitialHeadingInfo(headingArray);
     
-            }
+            } else {
+                toast('Cannot retrieve data.',
+                {
+                    icon: '❌',
+                    style: {
+                    borderRadius: '10px',
+                    background: '#2A2A3E',
+                    color: '#FFFFFF',
+                    boxShadow: "0px 0px 10px #191927",
+                    textAlign: 'center'
+                    },
+                }
+                );
         }).catch( error => { 
             if(error.code == "ERR_BAD_REQUEST") {
                 logOut();
