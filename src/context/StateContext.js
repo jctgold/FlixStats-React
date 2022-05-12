@@ -88,6 +88,7 @@ export const StateContext = ({children}) => {
                     },
                 }
                 );
+            }
         }).catch( error => { 
             if(error.code == "ERR_BAD_REQUEST") {
                 logOut();
