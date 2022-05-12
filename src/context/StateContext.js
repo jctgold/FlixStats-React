@@ -38,13 +38,12 @@ export const StateContext = ({children}) => {
             window.localStorage.setItem("token", token);
         } 
 
-        if(token) setToken(token);
+        setToken(token);
         window.location.hash = "";
     }
 
-    const getItems = async (type) => {
-
-        const { data } = await axios.get(`https://api.spotify.com/v1/me/top/${type}`, {
+    const getItems = async (type = "tracks") => {
+        await axios.get(`https://api.spotify.com/v1/me/top/${type}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -53,31 +52,38 @@ export const StateContext = ({children}) => {
                 limit: 10,
                 offset: 0,
             }
-        });
-
-        if (data.items.length > 0) {
+        }).then(({  data}) => {
+            if (data.items.length > 0) {
             
-            setItems(data.items);
-
-            let headingArray = [];
-
-            if(type === "tracks") {
-                headingArray = {
-                    title: data.items[0].name,
-                    subtitle: data.items[0].artists[0].name,
-                    rank: 0,
+                setItems(data.items);
+    
+                let headingArray = [];
+    
+                if(type === "tracks") {
+                    headingArray = {
+                        title: data.items[0].name,
+                        subtitle: data.items[0].artists[0].name,
+                        rank: 0,
+                    }
+                } else if (type === "artists") {
+                    headingArray = {
+                        title: data.items[0].name,
+                        rank: 0,
+                    }
                 }
-            } else if (type === "artists") {
-                headingArray = {
-                    title: data.items[0].name,
-                    rank: 0,
-                }
+                
+                setHeadingInfo(headingArray);
+                setInitialHeadingInfo(headingArray);
+    
             }
-            
-            setHeadingInfo(headingArray);
-            setInitialHeadingInfo(headingArray);
+        }).catch( error => { 
+            if(error.code == "ERR_BAD_REQUEST") {
+                logOut();
+            }
+        } );
 
-        } else {
+        /*
+         else {
             toast('Error getting data. Please logout and login again.',
             {
                 icon: '❌',
@@ -91,6 +97,7 @@ export const StateContext = ({children}) => {
             }
             );
         }
+        */
     
     }
 

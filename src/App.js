@@ -12,10 +12,10 @@ function App() {
   const { token, getToken, items, getItems, topType } = useStateContext();
 
   useEffect(() => {
-    console.log(token);
     if(!token) getToken();
-    console.log(token);
-    if(items.length < 1 && token) getItems(topType);
+    if(items.length < 1 && token) {
+      getItems(topType);
+    }
   },[token]);
 
   return (
