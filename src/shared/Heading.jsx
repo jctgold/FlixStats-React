@@ -13,6 +13,7 @@ const Heading = () => {
     const rank = headingInfo.rank;
     const type = topType.slice(0,-1);
 
+
     return (
         <motion.div 
             className='heading-container'
@@ -25,7 +26,6 @@ const Heading = () => {
                         <TextTransition
                             text={"#" + (rank + 1) + " Top " + type}
                             springConfig={ presets.gentle  }
-                            className="h3"
                         />  
                     </h3>
                     <h1>

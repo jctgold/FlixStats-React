@@ -191,6 +191,7 @@ body {
             background-color: $PRIMARY;
             color: $BG_DARK;
             font-weight: 500;
+            border: 0;
             cursor: pointer;
             transition: all 1s ease;
 
@@ -255,17 +256,11 @@ body {
     h3 {
         font-weight: 300;
         font-size: 24px;
-        color: $SECONDARY;
-        text-transform: capitalize;
-    }
-
-    .h3 {
-        font-weight: 300;
-        font-size: 24px;
-        color: $SECONDARY;
+        color: #5DFFCE;
         text-transform: capitalize;
     }
 }
+
 
 .text-width {
     width: 60%;

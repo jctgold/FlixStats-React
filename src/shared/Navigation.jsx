@@ -15,11 +15,18 @@ const Navigation = () => {
     }
 
     const handleTopTracks = async () => {
+        if(topType === "tracks") return;
+
+        console.log("getting tracks...");
+
         await getItems("tracks")
         await setTopType(() => "tracks")
     }
 
     const handleTopArtists = async () => {
+        if(topType === "artists") return;
+
+        console.log("getting artists...");
         await getItems("artists")
         await setTopType(() => "artists")
     }

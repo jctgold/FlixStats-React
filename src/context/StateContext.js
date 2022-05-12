@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from 'react-hot-toast';
+
 const Context = createContext();
 
 export const StateContext = ({children}) => {
@@ -74,7 +76,21 @@ export const StateContext = ({children}) => {
             
             setHeadingInfo(headingArray);
             setInitialHeadingInfo(headingArray);
-        } 
+
+        } else {
+            toast('Error getting data. Please logout and login again.',
+            {
+                icon: '❌',
+                style: {
+                borderRadius: '10px',
+                background: '#2A2A3E',
+                color: '#FFFFFF',
+                boxShadow: "0px 0px 10px #191927",
+                textAlign: 'center'
+                },
+            }
+            );
+        }
     
     }
 
