@@ -60,9 +60,18 @@ export const StateContext = ({children}) => {
                 let headingArray = [];
     
                 if(type === "tracks") {
+                    let artists = ""
+
+                    data.items[0].artists.forEach(function (artist, i, array) {
+                        if(i !== array.length - 1)
+                            artists += artist.name + ", "
+                        else 
+                            artists += artist.name
+                    })
+
                     headingArray = {
                         title: data.items[0].name,
-                        subtitle: data.items[0].artists[0].name,
+                        subtitle: artists,
                         rank: 0,
                     }
                 } else if (type === "artists") {
@@ -76,7 +85,7 @@ export const StateContext = ({children}) => {
                 setInitialHeadingInfo(headingArray);
     
             } else {
-                toast("Looks like you haven\'t listened to enough music this month. \n Listen to more music and try again later!",
+                toast("Looks like you haven't listened to enough music this month. \n Listen to more music and try again later!",
                 {
                     icon: '😔',
                     duration: 6000,
@@ -100,12 +109,23 @@ export const StateContext = ({children}) => {
 
     const onImageHover = (item, index) => {
         if(index !== initialHeadingInfo.rank) {
-            if(topType === "tracks")
+
+            let artists = ""
+
+            if(topType === "tracks") {
+                item.artists.forEach(function (artist, i, array) {
+                    if(i !== array.length - 1)
+                        artists += artist.name + ", "
+                    else 
+                        artists += artist.name
+                })
+
                 setHeadingInfo({
                     title: item.name,
-                    subtitle: item.artists[0].name,
+                    subtitle: artists,
                     rank: index,
                 });
+            }     
             else if (topType === "artists")
                 setHeadingInfo({
                     title: item.name,
