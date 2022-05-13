@@ -76,9 +76,10 @@ export const StateContext = ({children}) => {
                 setInitialHeadingInfo(headingArray);
     
             } else {
-                toast("Looks like you haven\'t listened to enough music this month. Listen to more msuic and try again later!",
+                toast("Looks like you haven\'t listened to enough music this month. \n Listen to more music and try again later!",
                 {
                     icon: '😔',
+                    duration: 6000,
                     style: {
                     borderRadius: '10px',
                     background: '#2A2A3E',
