@@ -76,9 +76,9 @@ export const StateContext = ({children}) => {
                 setInitialHeadingInfo(headingArray);
     
             } else {
-                toast('Cannot retrieve data.',
+                toast("Looks like you haven\'t listened to enough music this month. Listen to more msuic and try again later!",
                 {
-                    icon: '❌',
+                    icon: '😔',
                     style: {
                     borderRadius: '10px',
                     background: '#2A2A3E',
