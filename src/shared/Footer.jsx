@@ -28,7 +28,7 @@ const customStyles = {
           right: 0,
           top: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
       }
   };
 
@@ -87,7 +87,7 @@ const Footer = () => {
                         <TopImage ref={printRef} />
                     </div>
                 </div>
-                <div>
+                <div className='btns-wrapper'>
                     <button type="button" className="grey-btn" onClick={() => setIsOpen(false)}>Close</button>
                     <button type="button" className="primary-btn" onClick={handleDownloadImage}>Download</button>
                 </div>

@@ -138,6 +138,7 @@ button {
     width: 450px;
     height: 450px;
     overflow: hidden;
+    border-radius: 5px;
 }
 
 .int-generated-image-wrapper {
@@ -371,6 +372,10 @@ button {
     .btn {
         margin-bottom: 15px!important;
     }
+}
+
+.btns-wrapper {
+    margin-top: 10px
 }
 
 .grey-btn {
