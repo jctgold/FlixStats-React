@@ -134,6 +134,17 @@ button {
     }
 }
 
+.outer-generated-image-wrapper {
+    width: 450px;
+    height: 450px;
+    overflow: hidden;
+}
+
+.int-generated-image-wrapper {
+    transform: scale(0.7);
+    transform-origin: 0 0;
+}
+
 .generator-bg {
     position: relative;
     width: 650px;
@@ -346,6 +357,7 @@ button {
     padding: 30px 50px;
     pointer-events: none;
     z-index: 20;
+    background-image: linear-gradient(to bottom, rgba(25,25,39,0), rgba(25,25,39,0.4), rgba(25,25,39,0.85),rgba(25,25,39,1));
 
     p {
         text-transform: uppercase;

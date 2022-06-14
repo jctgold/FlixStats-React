@@ -82,7 +82,11 @@ const Footer = () => {
                 style={customStyles}
                 contentLabel="Download image"
             >
-                <TopImage ref={printRef} />
+                <div className='outer-generated-image-wrapper'>
+                    <div className='int-generated-image-wrapper'>
+                        <TopImage ref={printRef} />
+                    </div>
+                </div>
                 <div>
                     <button type="button" className="grey-btn" onClick={() => setIsOpen(false)}>Close</button>
                     <button type="button" className="primary-btn" onClick={handleDownloadImage}>Download</button>
