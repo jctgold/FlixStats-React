@@ -36,7 +36,7 @@ const Footer = () => {
 
     useEffect(() => Modal.setAppElement('body'),[])
     const [isOpen, setIsOpen] = React.useState(false);
-    const { token } = useStateContext();
+    const { items } = useStateContext();
     const printRef = useRef();
 
     const handleShare = () => {
@@ -65,7 +65,7 @@ const Footer = () => {
                 animate={{ opacity: 1, y: 0, transition: {delay: 1, duration: 0.5 }}}
             >
 
-                { token && <button type="button" className="btn primary-btn" onClick={handleShare}>Share</button>}
+                { items.length > 0 && <button type="button" className="btn primary-btn" onClick={handleShare}>Share</button>}
                 <p>
                     <Clock  
                         format={"[(]MM/DD/YYYY h:mm:ss A[)]"}

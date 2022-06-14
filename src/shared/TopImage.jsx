@@ -6,12 +6,12 @@ import GenCircle from './GenCircle';
 
 const TopImage = React.forwardRef((props, ref) => {
 
-  const { items } = useStateContext();
+  const { items, topType } = useStateContext();
 
   return (
     <div className='generator-bg' ref={ref}>
       <div className='texts-wrapper'>
-        <p className='gen-image-title'>Your<br />Top Tracks</p>
+        <p className='gen-image-title'>Your<br />Top {topType === "tracks" ? "Tracks" : "Artists"}</p>
         <p className='gen-image-footer'>FLIXSTATS</p>
       </div>
       <div className='background-wrapper'>
