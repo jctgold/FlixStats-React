@@ -134,6 +134,7 @@ button {
     }
 }
 
+
 .outer-generated-image-wrapper {
     width: 650*0.7px;
     height: 650*0.7px;
@@ -498,4 +499,17 @@ button {
         }
     }
 
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: all 300ms ease;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
 }

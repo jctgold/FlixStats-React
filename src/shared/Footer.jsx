@@ -54,7 +54,7 @@ const Footer = () => {
       })
       .catch((err) => {
         console.log(err)
-      })      
+      })    
     }
 
     return (
@@ -77,8 +77,7 @@ const Footer = () => {
 
             <Modal
                 isOpen={isOpen}
-                //onAfterOpen={afterOpenModal}
-                //onRequestClose={closeModal}
+                closeTimeoutMS={300}
                 style={customStyles}
                 contentLabel="Download image"
             >
