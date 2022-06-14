@@ -52,7 +52,7 @@ export const StateContext = ({children}) => {
                 limit: 10,
                 offset: 0,
             }
-        }).then(({  data}) => {
+        }).then(({ data}) => {
             if (data.items.length > 0) {
             
                 setItems(data.items);
@@ -106,6 +106,7 @@ export const StateContext = ({children}) => {
         } );
 
     }
+
 
     const onImageHover = (item, index) => {
         if(index !== initialHeadingInfo.rank) {
@@ -161,7 +162,7 @@ export const StateContext = ({children}) => {
              onImageHoverLeave,
              onImageHover,
              blur, 
-             setBlur
+             setBlur,
          }}
         >
             { children }

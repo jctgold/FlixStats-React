@@ -1,23 +1,94 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Clock from 'react-live-clock'
 import { motion } from 'framer-motion'
+import { useStateContext } from '../context/StateContext';
+import Modal from "react-modal";
+import { toPng } from 'html-to-image';
 
+import TopImage from './TopImage';
+
+const customStyles = {
+    content: {
+        display: 'flex',
+        backgroundColor: 'white',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+      },
+      overlay: {
+          zIndex: 100,
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      }
+  };
 
 const Footer = () => {
 
+    useEffect(() => Modal.setAppElement('body'),[])
+    const [isOpen, setIsOpen] = React.useState(false);
+    const { token } = useStateContext();
+    const printRef = useRef();
+
+    const handleShare = () => {
+        setIsOpen(true)
+    }
+
+    const handleDownloadImage = async () => {
+
+    toPng(printRef.current, { cacheBust: true, })
+      .then((dataUrl) => {
+        const link = document.createElement('a')
+        link.download = 'top-10.png'
+        link.href = dataUrl
+        link.click()
+      })
+      .catch((err) => {
+        console.log(err)
+      })      
+    }
+
     return (
-        <motion.div 
-            className='footer-container'
-            initial={{ opacity: 0, y: 20}}
-            animate={{ opacity: 1, y: 0, transition: {delay: 1, duration: 0.5 }}}>
-            <p>
-                <Clock  
-                    format={"MMMM M, YYYY [-] h:mm:ss A"}
-                    style={{color: '#FFEB80'}}
-                    ticking={true} />
-            </p>
-            <p>Created by Julia G</p>
-        </motion.div>
+        <>
+            <motion.div 
+                className='footer-container'
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: {delay: 1, duration: 0.5 }}}
+            >
+
+                { token && <button type="button" className="btn primary-btn" onClick={handleShare}>Share</button>}
+                <p>
+                    <Clock  
+                        format={"[(]MM/DD/YYYY h:mm:ss A[)]"}
+                        style={{color: '#FFEB80'}}
+                        ticking={true} />
+                </p>
+                <p>Created by Julia G</p>
+            </motion.div>
+
+            <Modal
+                isOpen={isOpen}
+                //onAfterOpen={afterOpenModal}
+                //onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Download image"
+            >
+                <TopImage ref={printRef} />
+                <div>
+                    <button type="button" className="grey-btn" onClick={() => setIsOpen(false)}>Close</button>
+                    <button type="button" className="primary-btn" onClick={handleDownloadImage}>Download</button>
+                </div>
+            </Modal>
+        </>
     )
 }
 
