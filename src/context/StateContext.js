@@ -27,6 +27,8 @@ export const StateContext = ({children}) => {
     const logOut = () => {
         setToken("");
         window.localStorage.removeItem("token");
+
+        setItems([])
     }
 
     const getToken = () => {
