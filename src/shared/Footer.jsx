@@ -3,7 +3,7 @@ import Clock from 'react-live-clock'
 import { motion } from 'framer-motion'
 import { useStateContext } from '../context/StateContext';
 import Modal from "react-modal";
-import { toPng } from 'html-to-image';
+import { toPng, toJpeg } from 'html-to-image';
 
 import TopImage from './TopImage';
 
@@ -45,7 +45,7 @@ const Footer = () => {
 
     const handleDownloadImage = async () => {
 
-    toPng(printRef.current, { cacheBust: true, })
+    toPng(printRef.current, { allowTaint : false, useCORS: true, cacheBust: true, })
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'top-10.png'
@@ -54,8 +54,8 @@ const Footer = () => {
       })
       .catch((err) => {
         console.log(err)
-      })    
-    }
+      }) 
+    }   
 
     return (
         <>
