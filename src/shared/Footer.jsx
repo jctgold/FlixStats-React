@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useStateContext } from '../context/StateContext';
 import Modal from "react-modal";
 import { toPng, toJpeg } from 'html-to-image';
+//import html2canvas from "html2canvas";
 
 import TopImage from './TopImage';
 
@@ -45,7 +46,34 @@ const Footer = () => {
 
     const handleDownloadImage = async () => {
 
-    toPng(printRef.current, { useCORS: true })
+        const imageDiv = document.querySelector(".generator-bg");
+
+        // html2canvas(imageDiv).then(async (canvas) => {
+        //     const date = new Date().getTime();
+        //     const dataUrl = canvas.toDataURL();
+        //     const blob = await (await fetch(dataUrl)).blob();
+      
+        //     const filesArray = [
+        //       new File(
+        //         [blob],
+        //         `top-10${date}.png`, //name of the file
+        //         {
+        //           type: blob.type,
+        //           lastModified: date, // date of the last change
+        //         }
+        //       ),
+        //     ];
+           
+        //     const a = document.createElement("a");
+        //     a.href = canvas
+        //       .toDataURL("image/jpeg")
+        //       .replace("image/jpeg", "image/octet-stream");
+        //     a.download = `my_top_10_${date}.jpg`;
+        //   });
+        // };
+      
+        console.log(imageDiv)
+    toPng(imageDiv, { useCORS: true })
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'top-10.png'
@@ -83,7 +111,7 @@ const Footer = () => {
             >
                 <div className='outer-generated-image-wrapper'>
                     <div className='int-generated-image-wrapper'>
-                        <TopImage ref={printRef} />
+                        <TopImage ref={printRef} className="generate-image" />
                     </div>
                 </div>
                 <div className='btns-wrapper'>
