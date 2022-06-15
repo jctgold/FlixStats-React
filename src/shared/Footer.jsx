@@ -45,7 +45,7 @@ const Footer = () => {
 
     const handleDownloadImage = async () => {
 
-    toPng(printRef.current, { allowTaint : false, useCORS: true, cacheBust: true, })
+    toPng(printRef.current, { useCORS: true })
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'top-10.png'
