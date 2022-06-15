@@ -73,7 +73,7 @@ const Footer = () => {
         // };
       
         console.log(imageDiv)
-    toPng(imageDiv, { useCORS: true })
+    toPng(imageDiv, { allowTaint: true, useCORS: true })
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'top-10.png'
