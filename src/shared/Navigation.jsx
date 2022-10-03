@@ -43,7 +43,7 @@ const Navigation = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0, transition: { delay: 0, duration: 1 } }}
     >
-      <div className="title">FlixStats</div>
+      <div className={`title ${!token && 'title-center'}`}>FlixStats</div>
 
       {token && (
         <>

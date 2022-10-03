@@ -312,6 +312,11 @@ button {
     text-transform: uppercase;
     font-size: 28px;
     pointer-events: none;
+
+    &.title-center {
+      text-align: center;
+      width: 100%;
+    }
   }
 
   .navbar-nav {
