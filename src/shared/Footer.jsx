@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Clock from 'react-live-clock';
+// import Clock from 'react-live-clock';
 import { motion } from 'framer-motion';
 import { useStateContext } from '../context/StateContext';
 import Modal from 'react-modal';
-import { toPng, toJpeg } from 'html-to-image';
+import { toPng } from 'html-to-image';
 
 import TopImage from './TopImage';
 
@@ -79,13 +79,13 @@ const Footer = () => {
             Share
           </button>
         )}
-        <p>
+        {/* <p>
           <Clock
             format={'[(]MM/DD/YYYY h:mm:ss A[)]'}
             style={{ color: '#FFEB80' }}
             ticking={true}
           />
-        </p>
+        </p> */}
         <p>Created by Julia G</p>
       </motion.div>
 
