@@ -46,7 +46,12 @@ const Footer = () => {
 
     console.log(imageDiv);
 
-    await toPng(imageDiv, { allowTaint: true, useCORS: true, cacheBust: true })
+    await toPng(imageDiv, {
+      allowTaint: true,
+      useCORS: true,
+      cacheBust: true,
+      width: 650,
+    })
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.download = 'top-10.png';
